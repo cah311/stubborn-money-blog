@@ -9,7 +9,7 @@ import {
   Author,
   Comments,
   CommentsForm,
-} from "../../compponents";
+} from "../../components";
 
 const PostDetails = ({ post }) => {
   return (
