@@ -9,7 +9,33 @@ const CommentsForm = ({ slug }) => {
   const emailEl = useRef();
   const storeDataEl = useRef();
 
-  const handleCommentSubmission = () => {};
+  const handleCommentSubmission = () => {
+    setError(false);
+
+    const { value: comment } = commentEl.current;
+    const { value: name } = nameEl.current;
+    const { value: email } = emailEl.current;
+    const { checked: storeData } = storeDataEl.current;
+
+    if (!comment || !name || !email) {
+      setError(true);
+      return;
+    }
+    const commentObj = {
+      name,
+      email,
+      comment,
+      slug,
+    };
+
+    if (storedData) {
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+    } else {
+      localStorage.removeItem("name", name);
+      localStorage.removeItem("email", email);
+    }
+  };
 
   return (
     <div className="bg-green-700 bg-opacity-80 shadow-lg rounded-lg p-8 pb-12 mg-8">
@@ -40,9 +66,21 @@ const CommentsForm = ({ slug }) => {
           name="email"
         />
       </div>
-      {error && (
-        <p className="text-xs text-red-500">All fields are required.</p>
-      )}
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        <div>
+          <input
+            ref={storeDataEl}
+            type="checkbox"
+            id="storeData"
+            name="storeData"
+            value="true"
+          />
+          <label className="text-black cursor-pointer ml-2" htmlFor="storeData">
+            Save name and email for future comments
+          </label>
+        </div>
+      </div>
+      {error && <p className="text-xs text-red-500">All fields are required</p>}
       <div className="mt-8">
         <button
           type="button"
