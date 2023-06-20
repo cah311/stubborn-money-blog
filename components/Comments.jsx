@@ -7,6 +7,8 @@ import { getComments } from "../services";
 const Comments = ({ slug }) => {
   const [comments, setComments] = useState([]);
 
+  console.log(comments);
+
   useEffect(() => {
     getComments(slug).then((result) => {
       setComments(result);
