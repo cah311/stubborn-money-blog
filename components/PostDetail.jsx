@@ -22,7 +22,7 @@ const PostDetail = ({ post }) => {
     switch (type) {
       case "heading-one":
         return (
-          <h1 key={index} className="text-xl font-semibold mb-4">
+          <h1 key={index} className="text-3xl font-semibold mb-4">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -30,7 +30,7 @@ const PostDetail = ({ post }) => {
         );
       case "heading-two":
         return (
-          <h2 key={index} className="text-xl font-semibold mb-4">
+          <h2 key={index} className="text-2xl font-semibold mb-4">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -44,14 +44,6 @@ const PostDetail = ({ post }) => {
             ))}
           </h3>
         );
-      case "paragraph":
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        );
       case "heading-four":
         return (
           <h4 key={index} className="text-md font-semibold mb-4">
@@ -60,6 +52,15 @@ const PostDetail = ({ post }) => {
             ))}
           </h4>
         );
+      case "paragraph":
+        return (
+          <p key={index} className="mb-8">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </p>
+        );
+
       case "image":
         return (
           <img
@@ -116,7 +117,7 @@ const PostDetail = ({ post }) => {
             <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
           </div>
         </div>
-        <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
+        <h1 className="mb-8 text-4xl font-semibold">{post.title}</h1>
         {post.content.raw.children.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemIndex) =>
             getContentFragment(itemIndex, item.text, item)
