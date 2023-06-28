@@ -2,85 +2,84 @@ import React from "react";
 import moment from "moment";
 
 const PostDetail = ({ post }) => {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-    }
-
-    switch (type) {
+  const renderNode = (node, index) => {
+    switch (node.type) {
       case "heading-one":
         return (
           <h1 key={index} className="text-3xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </h1>
         );
       case "heading-two":
         return (
           <h2 key={index} className="text-2xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </h2>
         );
       case "heading-three":
         return (
           <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </h3>
         );
       case "heading-four":
         return (
           <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </h4>
         );
       case "paragraph":
         return (
           <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </p>
         );
       case "link":
         return (
-          <a href={obj.url} key={index} className="link">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
+          <a
+            key={index}
+            href={node.url || node.href || "#"}
+            className="font-bold text-red-700 italic "
+          >
+            {node.children.map((child, childIndex) =>
+              renderNode(child, childIndex)
+            )}
           </a>
         );
-
       case "image":
         return (
           <img
             key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
+            alt={node.title}
+            height={node.height}
+            width={node.width}
+            src={node.src}
           />
         );
       default:
-        return modifiedText;
+        if (node.text) {
+          let text = node.text;
+          if (node.bold) {
+            text = <b>{text}</b>;
+          }
+          if (node.italic) {
+            text = <em>{text}</em>;
+          }
+          if (node.underline) {
+            text = <u>{text}</u>;
+          }
+          return text;
+        }
     }
   };
 
@@ -126,13 +125,9 @@ const PostDetail = ({ post }) => {
           </div>
         </div>
         <h1 className="mb-8 text-4xl font-semibold">{post.title}</h1>
-        {post.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item)
-          );
-
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
+        {post.content.raw.children.map((typeObj, index) =>
+          renderNode(typeObj, index)
+        )}
       </div>
     </div>
   );
