@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Logo from "../public/logoLong.svg";
 
 import Link from "next/link";
 
@@ -12,19 +13,20 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-10 mb-8">
-      <div className="border-b w-full inline-block border-black py-8">
+    <div className="container mx-0 px-0 mb-8">
+      <div className="border-b w-screen inline-block border-black-500/75 py-5 px-14 shadow-md">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="cursor-pointer font-bold text-4xl text-black">
+            {/* <span className="cursor-pointer font-bold text-4xl text-black">
               Stubborn Money
-            </span>
+            </span> */}
+            <img src={Logo} alt="logo" />
           </Link>
         </div>
-        <div className="hidden md:float-left md:contents">
+        <div className="hidden md:float-left md:contents mr-1">
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className="md:float-right mt-2 align-middle text-black ml-4 font-semibold cursor-pointer">
+              <span className=" md:float-right mt-2 align-middle text-black ml-4 font-semibold cursor-pointer">
                 {category.name}
               </span>
             </Link>
