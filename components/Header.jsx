@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../public/logoLong.svg";
 
 import Link from "next/link";
 
@@ -20,7 +19,7 @@ const Header = () => {
             {/* <span className="cursor-pointer font-bold text-4xl text-black">
               Stubborn Money
             </span> */}
-            <img src={Logo} alt="logo" />
+            <img className="h-20" src="/logoLong.svg" />
           </Link>
         </div>
         <div className="hidden md:float-left md:contents mr-1">
