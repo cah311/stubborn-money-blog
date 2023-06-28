@@ -60,6 +60,14 @@ const PostDetail = ({ post }) => {
             ))}
           </p>
         );
+      case "link":
+        return (
+          <a href={obj.url} key={index} className="link">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </a>
+        );
 
       case "image":
         return (
