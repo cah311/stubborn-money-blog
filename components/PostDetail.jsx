@@ -49,6 +49,7 @@ const PostDetail = ({ post }) => {
           <a
             key={index}
             href={node.url || node.href || "#"}
+            target="_blank"
             className="font-bold text-red-700 italic "
           >
             {node.children.map((child, childIndex) =>
