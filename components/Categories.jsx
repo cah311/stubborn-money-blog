@@ -11,11 +11,14 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="bg-green-700 bg-opacity-80 shadow-lg rounded-lg p-8 mb-12">
+    <div className="bg-gray-100 border border-gray-200 shadow-lg rounded-md  p-8 mb-12 ">
       <h3 className="text-xl mb-8 font-semibold border-b pb-4">Categories</h3>
       {categories.map((category, index) => (
         <Link key={index} href={`/category/${category.slug}`}>
-          <span className={`cursor-pointer block  pb-3 mb-3`}>
+          <span
+            className={`cursor-pointer block pt-1 pb-1 items-center w-full transition duration-700 ease hover:bg-gray-300 hover:bg-opacity-80  
+           text-lg rounded-lg text-black px-5 cursor-pointer`}
+          >
             {category.name}
           </span>
         </Link>

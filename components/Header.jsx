@@ -25,7 +25,7 @@ const Header = () => {
         <div className="hidden md:float-left md:contents mr-1">
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className=" md:float-right mt-2 align-middle text-black ml-4 font-semibold cursor-pointer">
+              <span className=" md:float-right mt-6 text-black text-2xl ml-4 font-semibold cursor-pointer">
                 {category.name}
               </span>
             </Link>
