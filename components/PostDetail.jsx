@@ -85,12 +85,12 @@ const PostDetail = ({ post }) => {
   };
 
   return (
-    <div className="bg-green-700 bg-opacity-80 shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
+    <div className="bg-gray-100 border border-gray-200 shadow-lg rounded-md  lg:p-8 pb-12 mb-8">
       <div className="relative overflow-hidden shadow-md mb-6">
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className="object-top h-full w-full rounded-t-lg"
+          className="object-top h-full w-full rounded-t-md"
         />
       </div>
       <div className="px-4 lg:px-4">
