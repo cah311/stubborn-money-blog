@@ -53,13 +53,13 @@ const CommentsForm = ({ slug }) => {
 
   return (
     <div className="bg-gray-100 border border-gray-200 shadow-lg rounded-md p-8 pb-12 mb-8">
-      <h3 className="text-xl mb-8 font-semibold border-b pb-4">
+      <h3 className="text-xl mb-8 font-semibold border-b border-gray-300  pb-4">
         Leave a Reply
       </h3>
       <div className="grid grid-cols-1 gap-4 mb-4">
         <textarea
           ref={commentEl}
-          className="p-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
+          className="p-4 outline-none w-full rounded-lg transition duration-700 ease hover:bg-gray-300  focus:ring-2 focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
           placeholder="Comment"
           name="comment"
         />
@@ -68,20 +68,20 @@ const CommentsForm = ({ slug }) => {
         <input
           type="text"
           ref={nameEl}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
+          className="py-2 px-4 outline-none w-full rounded-full focus:ring-2 hover:bg-gray-300 transition duration-700 ease focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
           placeholder="Name"
           name="name"
         />
         <input
           type="text"
           ref={emailEl}
-          className="py-2 px-4 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
+          className="py-2 px-4 outline-none w-full rounded-full transition duration-700 ease hover:bg-gray-300  focus:ring-2 focus:ring-gray-200 bg-gray-200 bg-opacity-70 text-black"
           placeholder="Email"
           name="email"
         />
       </div>
       <div className="grid grid-cols-1 gap-4 mb-4">
-        <div>
+        {/* <div>
           <input
             ref={storeDataEl}
             type="checkbox"
@@ -92,7 +92,7 @@ const CommentsForm = ({ slug }) => {
           <label className="text-black cursor-pointer ml-2" htmlFor="storeData">
             Save name and email for future comments
           </label>
-        </div>
+        </div> */}
       </div>
       {error && <p className="text-xs text-red-500">All fields are required</p>}
       <div className="mt-8">

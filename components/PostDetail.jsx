@@ -90,7 +90,7 @@ const PostDetail = ({ post }) => {
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className="object-top h-full w-full rounded-t-lg"
+          className="object-top h-full w-full rounded-t-md"
         />
       </div>
       <div className="px-4 lg:px-4">
